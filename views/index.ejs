@@ -1,11 +1,330 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+	<link rel="icon" href="img/icon.png">
+	<title>Kumpul Berbagi</title>
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<script src="js/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="kumpul berbagi, gratis, bagi bagi hadiah" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+	<script src="js/responsiveslides.min.js"></script>
+	<script>
+		$(function() {
+			$("#slider").responsiveSlides({
+				auto: true,
+				nav: true,
+				speed: 500,
+				namespace: "callbacks",
+				pager: true,
+			});
+		});
+	</script>
+	<!---- start-smoth-scrolling---->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="js/new.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div class="header" id="home">
+		<div class="container">
+			<div class="logo">
+				<a href="index.ejs"><img src="img/logo.png" alt="" /></a>
+			</div>
+			<div class="top-menu">
+				<span class="menu"> </span>
+				<ul>
+					<li><a class="active" href="/">home<lable><img src="img/line.png"></lable></a></li>
+					<li><a href="/about">about</a></li>
+					<li><a href="/contact">contact</a></li>
+					<li><a href="/login">Login/Register</a></li>
+					<li><a class="last" href="/upload">Upload</a></li>
+				</ul>
+			</div>
+			<!-- script-for-menu -->
+			<script>
+				$("span.menu").click(function() {
+					$(".top-menu ul").slideToggle("slow", function() {});
+				});
+			</script>
+			<!-- script-for-menu -->
+
+			<!-- start search-->
+			<!-- <div class="search-box">
+				<div id="sb-search" class="sb-search">
+					<form>
+						<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+						<input class="sb-search-submit" type="submit" value="">
+						<span class="sb-icon-search"> </span>
+					</form>
+				</div>
+			</div> -->
+			<!-- search-scripts -->
+			<script src="js/classie.js"></script>
+			<script src="js/uisearch.js"></script>
+			<script>
+				new UISearch(document.getElementById('sb-search'));
+			</script>
+			<!-- //search-scripts -->
+			<div class="clearfix"></div>
+		</div>
+
+		<!-- script-for-nav -->
+		<script>
+			$(document).ready(function() {
+				$("span.menu").click(function() {
+					$(".top-nav ul").slideToggle(1000);
+				});
+			});
+		</script>
+		<!-- script-for-nav -->
+		<!-- /top-nav -->
+		<div class="clearfix"></div>
+	</div>
+	</div>
+	<!-- header-section-ends -->
+	<div class="header-slider" id="home">
+		<div class="slider">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider">
+					<li>
+						<img src="img/image1.jpg" alt="">
+						<div class="caption">
+
+						</div>
+					</li>
+					<li>
+						<img src="img/image1.jpg" alt="">
+						<div class="caption">
+
+					</li>
+					<li>
+						<img src="img/image1.jpg" alt="">
+						<div class="caption">
+
+						</div>
+					</li>
+					<li>
+						<img src="img/image1.jpg" alt="">
+						<div class="caption">
+
+						</div>
+					</li>
+					<li>
+						<img src="img/image1.jpg" alt="">
+						<div class="caption">
+
+						</div>
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- content-section-starts -->
+	<div class="content">
+		<div class="ourservice">
+			<div class="container">
+				<div class="ourservice-header">
+					<div class="ourservice-head">
+						<a href="#portfolio" role="button">View Alls</a>
+				</div>
+
+			</div>
+		</div>
+		<div class="ourportfoilo">
+
+			<div class="container">
+
+				<div class="our-work-section" id="portfolio">
+					<div id="portfoliolist">
+						<div class="portfolio card mix_all  wow bounceIn" class="cbp-vm-image" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+
+							<div class="portfolio-wrapper">
+									<img src="img/mouse.jpg" alt="" />
+							</div>
+							<h4>Mouse Mini</h4>
+							<p>Dibagikan Gratis Senin 30 Januari 2017</p>
+						</div>
+
+						<div class="portfolio card mix_all  wow bounceIn" class="cbp-vm-image" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+
+							<div class="portfolio-wrapper">
+									<img src="img/rubik.jpg" alt="" />
+							</div>
+							<h4>Rubik 3x3</h4>
+							<p>Dibagikan Gratis Selasa 31 Januari 2017</p>
+						</div>
+
+						<div class="portfolio card mix_all  wow bounceIn" class="cbp-vm-image" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+
+							<div class="portfolio-wrapper">
+									<img src="img/game.jpg" alt="" />
+							</div>
+							<h4>Game Card</h4>
+							<p>Dibagikan Gratis Rabu 1 Februari 2017</p>
+						</div>
+
+
+						<div class="clearfix"></div>
+					</div>
+				</div>
+
+
+				<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						$(".scroll").click(function(event) {
+							event.preventDefault();
+							$('html,body').animate({
+								scrollTop: $(this.hash).offset().top
+							}, 1200);
+						});
+					});
+				</script>
+				<!-- Script for gallery Here -->
+				<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+				<script type="text/javascript">
+					$(function() {
+
+						var filterList = {
+
+							init: function() {
+
+								// MixItUp plugin
+								// http://mixitup.io
+								$('#portfoliolist').mixitup({
+									targetSelector: '.portfolio',
+									filterSelector: '.filter',
+									effects: ['fade'],
+									easing: 'snap',
+									// call the hover effect
+									onMixEnd: filterList.hoverEffect()
+								});
+
+							},
+
+							hoverEffect: function() {
+
+								// Simple parallax effect
+								$('#portfoliolist .portfolio').hover(
+									function() {
+										$(this).find('.label').stop().animate({
+											bottom: 0
+										}, 200, 'easeOutQuad');
+										$(this).find('img').stop().animate({
+											top: -30
+										}, 500, 'easeOutQuad');
+									},
+									function() {
+										$(this).find('.label').stop().animate({
+											bottom: -40
+										}, 200, 'easeInQuad');
+										$(this).find('img').stop().animate({
+											top: 0
+										}, 300, 'easeOutQuad');
+									}
+								);
+
+							}
+
+						};
+
+						// Run the show!
+						filterList.init();
+
+
+					});
+				</script>
+				<!-- Gallery Script Ends -->
+				<!-- pop-up-box -->
+				<script type="text/javascript" src="js/modernizr.custom.min.js"></script>
+				<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+				<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+				<!-- //pop-up-box -->
+				<script>
+					$(document).ready(function() {
+						$('.popup-with-zoom-anim').magnificPopup({
+							type: 'inline',
+							fixedContentPos: false,
+							fixedBgPos: true,
+							overflowY: 'auto',
+							closeBtnInside: true,
+							preloader: false,
+							midClick: true,
+							removalDelay: 300,
+							mainClass: 'my-mfp-zoom-in'
+						});
+
+					});
+				</script>
+				<div class="clearfix"></div>
+				<!-- Work Ends Here -->
+
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+
+
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="footer">
+		<div class="container">
+
+			<div class="clearfix"></div>
+			<div class="footer-bottom">
+				<p> Copyright &copy;2016<a href="#" target="target_blank">Kumpul Berbagi</a></p>
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					/*
+							var defaults = {
+					  			containerID: 'toTop', // fading element id
+								containerHoverID: 'toTopHover', // fading element hover id
+								scrollSpeed: 1200,
+								easingType: 'linear'
+					 		};
+							*/
+
+					$().UItoTop({
+						easingType: 'easeOutQuart'
+					});
+
+				});
+			</script>
+			<a class="scroll" href="#home" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-localScroll/1.4.0/jquery.localScroll.min.js"></script>
+		</div>
+	</div>
+</body>
+
 </html>

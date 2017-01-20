@@ -41,10 +41,24 @@ router.post('/register', function(req, res, next) {
     })
 })
 
+router.post('/contact', function(req, res, next) {
+    // create a new user
+    models.Feedback.create({
+        name: req.body.name,
+        email: req.body.email,
+        comment: req.body.comment
+    }).then(function() {
+        console.log("Saving New Feedback");
+        res.redirect('/contact')
+    })
+})
+
 
 router.get('/', function(req, res, next) {
     res.render('index');
 });
+
+
 
 router.get('/login', function(req, res, next) {
     res.render('login');

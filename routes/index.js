@@ -62,6 +62,10 @@ router.get('/adminpanel', function(req, res, next) {
     res.render('adminpanel');
 });
 
+router.get('/update', function(req, res, next) {
+    res.render('update');
+});
+
 
 router.get('/login', function(req, res, next) {
     res.render('login');

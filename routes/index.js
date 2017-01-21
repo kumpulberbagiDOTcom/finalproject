@@ -20,7 +20,7 @@ router.post('/login', function(req, res, next) {
     models.User.findAll().then(function(data) {
         data.forEach(function(getData) {
             if (getData.email == email && getData.password == password) {
-                res.redirect('/')
+                res.redirect('/adminpanel')
             } else {
               console.log("Email Salah");
             }
@@ -58,6 +58,9 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
+router.get('/adminpanel', function(req, res, next) {
+    res.render('adminpanel');
+});
 
 
 router.get('/login', function(req, res, next) {

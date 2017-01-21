@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="icon" href="img/icon.png">
+	<title>Kumpul Berbagi</title>
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<script src="js/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="kumpul berbagi, gratis, bagi bagi hadiah" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+	<script src="js/responsiveslides.min.js"></script>
+	<script>
+		$(function() {
+			$("#slider").responsiveSlides({
+				auto: true,
+				nav: true,
+				speed: 500,
+				namespace: "callbacks",
+				pager: true,
+			});
+		});
+	</script>
+	<!---- start-smoth-scrolling---->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="js/new.js"></script>
+	<link href="css/new.css" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div class="header" id="home">
+		<div class="container">
+			<div class="logo">
+				<a href="index.ejs"><img src="img/logo.png" alt="" /></a>
+			</div>
+			<div class="top-menu">
+				<span class="menu"> </span>
+				<ul>
+					<li><a class="active" href="/">home<lable><img src="img/line.png"></lable></a></li>
+					<li><a class="last">Selamat Datang :</a></li>
+					<li><a class="last"> Admin</a></li>
+					<li>
+						<a></a>
+					</li>
+					<li>
+						<a></a>
+					</li>
+					<li><a class="last" href="/" target="_blank">Logout</a></li>
+				</ul>
+			</div>
+			<!-- script-for-menu -->
+			<script>
+				$("span.menu").click(function() {
+					$(".top-menu ul").slideToggle("slow", function() {});
+				});
+			</script>
+			<script src="js/classie.js"></script>
+			<script src="js/uisearch.js"></script>
+			<script>
+				new UISearch(document.getElementById('sb-search'));
+			</script>
+			<!-- //search-scripts -->
+			<div class="clearfix"></div>
+		</div>
+
+		<!-- script-for-nav -->
+		<script>
+			$(document).ready(function() {
+				$("span.menu").click(function() {
+					$(".top-nav ul").slideToggle(1000);
+				});
+			});
+		</script>
+		<!-- script-for-nav -->
+		<!-- /top-nav -->
+		<div class="clearfix"></div>
+	</div>
+	</div>
+	<!-- header-section-ends -->
+	<div class="header-slider" id="home">
+		<div class="slider">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider">
+					<li>
+						<img src="img/image1.jpg" alt="">
+						<div class="caption">
+							<ul class="nav nav-pills nav-stacked">
+								<li role="presentation" class="active"><a href="#">Admin Panel</a></li>
+								<li role="presentation"><a href="#">Input Data</a></li>
+								<li role="presentation"><a href="#">Update Data</a></li>
+							</ul>
+							<div class="boxData">
+								<form action="" method="post" name="Login_Form" class="form-inputData">
+										<input type="text" class="form-control" name="imageurl" placeholder="Image URL" required="" autofocus="" />
+										<br>
+										<input type="text" class="form-control" name="namabarang" placeholder="Name Product" required="" autofocus="" />
+										<br>
+										<div class="form-group">
+
+												<textarea class="form-control" name="description" placeholder="Description Product"rows="5" id="comment"></textarea>
+										</div>
+										<input class="btn btn-lg btn-info btn-block" type="submit" value="SAVE">
+										<input class="btn btn-lg btn-info btn-block" type="reset" value="Reset">
+								</form>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- content-section-starts -->
+	<div class="footer">
+		<div class="container">
+
+			<div class="clearfix"></div>
+			<div class="footer-bottom">
+				<p> Copyright &copy;2016<a href="#" target="target_blank">Kumpul Berbagi</a></p>
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					/*
+							var defaults = {
+					  			containerID: 'toTop', // fading element id
+								containerHoverID: 'toTopHover', // fading element hover id
+								scrollSpeed: 1200,
+								easingType: 'linear'
+					 		};
+							*/
+
+					$().UItoTop({
+						easingType: 'easeOutQuart'
+					});
+
+				});
+			</script>
+			<a class="scroll" href="#home" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-localScroll/1.4.0/jquery.localScroll.min.js"></script>
+		</div>
+	</div>
+</body>
+
+</html>

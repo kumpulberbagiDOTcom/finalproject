@@ -10,7 +10,28 @@ const models = require('../models')
 //         });
 //     });
 // })
+//
+models.Product.findAll().then(function(data) {
+    var name = [];
+    var des = [];
+    var img = [];
+    var datalength = data.length
+    for (var i = 0 ; i < data.length; i++) {
+        name.push(`${data[i].name}`)
+        des.push(`${data[i].description}`)
+        img.push(`${data[i].imageUrl}`)
+    }
+    console.log(name);
+    router.get('/', function(req, res, next) {
+        res.render('index', {
+            getdatalength : datalength,
+            getImg: img,
+            getName: name,
+            getDec: des
+        });
+    });
 
+});
 
 router.post('/login', function(req, res, next) {
     var email = req.body.email
@@ -22,7 +43,7 @@ router.post('/login', function(req, res, next) {
             if (getData.email == email && getData.password == password) {
                 res.redirect('/adminpanel')
             } else {
-              console.log("Email Salah");
+                console.log("Email Salah");
             }
         })
     })
@@ -41,6 +62,18 @@ router.post('/register', function(req, res, next) {
     })
 })
 
+router.post('/adminpanel', function(req, res, next) {
+    // create a new user
+    models.Product.create({
+        imageUrl: req.body.imageurl,
+        name: req.body.name,
+        description: req.body.description
+    }).then(function() {
+        console.log("Saving New Product");
+        res.redirect('/adminpanel')
+    })
+})
+
 router.post('/contact', function(req, res, next) {
     // create a new user
     models.Feedback.create({
@@ -54,9 +87,6 @@ router.post('/contact', function(req, res, next) {
 })
 
 
-router.get('/', function(req, res, next) {
-    res.render('index');
-});
 
 router.get('/adminpanel', function(req, res, next) {
     res.render('adminpanel');

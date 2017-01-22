@@ -121,11 +121,11 @@
 							<ul class="navImage nav-pills nav-stacked">
 								<img src="img/rubik.jpg" alt="">
 								<div class="qrcode">
-										<img src="img/qrcode.png" alt="">
+									<img src="img/qrcode.png" alt="">
 								</div>
 							</ul>
 							<div class="boxData">
-									<iframe width="600" height="400" src="https://www.youtube.com/embed/bSge4WEqVFY" frameborder="0" allowfullscreen></iframe>
+								<iframe width="600" height="400" src="https://www.youtube.com/embed/bSge4WEqVFY" frameborder="0" allowfullscreen></iframe>
 							</div>
 						</div>
 					</li>
@@ -169,39 +169,26 @@
 				</div>
 			</div>
 			<div class="ourportfoilo">
-
 				<div class="container">
 
 					<div class="our-work-section" id="portfolio">
 						<div id="portfoliolist">
-
-							<div class="portfolio card mix_all  wow bounceIn" class="cbp-vm-image" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
-								<div class="portfolio-wrapper">
-									<img src="img/mouse.jpg" alt="" />
+							<%var number = 1%>
+							<%for (var i = getdatalength-1; i >= 0; i--) {%>
+								<div class="portfolio card mix_all  wow bounceIn" class="cbp-vm-image" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
+									<div class="portfolio-wrapper">
+										<img src=<%=getImg[i]%> alt="" />
+									</div>
+									<h4><%=getName[i]%></h4>
+									<p>
+										<%=getDec[i]%>
+									</p>
 								</div>
-								<h4>Mouse Mini</h4>
-								<p>Dibagikan Gratis Senin 30 Januari 2017</p>
-							</div>
-
-							<div class="portfolio card mix_all  wow bounceIn" class="cbp-vm-image" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
-								<div class="portfolio-wrapper">
-									<img src="img/rubik.jpg" alt="" />
-								</div>
-								<h4>Rubik 3x3</h4>
-								<p>Dibagikan Gratis Selasa 31 Januari 2017</p>
-							</div>
-
-							<div class="portfolio card mix_all  wow bounceIn" class="cbp-vm-image" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
-								<div class="portfolio-wrapper">
-									<img src="img/game.jpg" alt="" />
-								</div>
-								<h4>Game Card</h4>
-								<p>Dibagikan Gratis Rabu 1 Februari 2017</p>
-							</div>
-							<div class="clearfix"></div>
-
-
-
+								<%if(number%3==0){%>
+										<div class="clearfix"> </div>
+								<%}%>
+								<%number++%>
+								<%}%>
 						</div>
 					</div>
 

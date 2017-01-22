@@ -133,11 +133,10 @@
 										<%var description = getDes[i]%>
 										<td><%=number%></td>
 										<td><%=getName[i]%></td>
-										<td><button class="btn btn-primary" onclick="apa()">Edit Data</button> <button class="btn btn-warning" onclick="apa()">Hapus</button></td>
+										<td><button class="btn btn-primary">Edit Data</button> <a class="btn btn-warning" href="/delete/<%=id%>">Hapus</a></td>
 									</tr>
 									<%number++%>
 									<%}%>
-
 								</table>
 							</div>
 						</div>
@@ -173,12 +172,7 @@
 			</script>
 			<a class="scroll" href="#home" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-localScroll/1.4.0/jquery.localScroll.min.js"></script>
-			<script>
-				function apa() {
-					return alert('^_^')
-				}
-			</script>
-		</div>
+	</div>
 	</div>
 </body>
 

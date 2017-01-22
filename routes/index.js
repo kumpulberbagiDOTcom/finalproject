@@ -11,51 +11,61 @@ const models = require('../models')
 //     });
 // })
 //
-models.Product.findAll().then(function(data) {
-    var name = [];
-    var des = [];
-    var img = [];
-    var datalength = data.length
-    for (var i = 0 ; i < data.length; i++) {
-        name.push(`${data[i].name}`)
-        des.push(`${data[i].description}`)
-        img.push(`${data[i].imageUrl}`)
-    }
-    console.log(name);
-    router.get('/', function(req, res, next) {
+
+router.get('/', function(req, res, next) {
+    models.Product.findAll().then(function(data) {
+        var name = [];
+        var des = [];
+        var img = [];
+        var datalength = data.length
+        for (var i = 0; i < data.length; i++) {
+            name.push(`${data[i].name}`)
+            des.push(`${data[i].description}`)
+            img.push(`${data[i].imageUrl}`)
+        }
         res.render('index', {
-            getdatalength : datalength,
+            getdatalength: datalength,
             getImg: img,
             getName: name,
             getDec: des
         });
     });
-
 });
 
-models.Product.findAll().then(function(data){
-  var id = []
-  var name = []
-  var imageurl = []
-  var description = []
-  var datalength = data.length
-  for (var i = 0; i < data.length; i++) {
-    id.push(`${data[i].id}`)
-    name.push(`${data[i].name}`)
-    imageurl.push(`${data[i].imageUrl}`)
-    description.push(`${data[i].description}`)
-  }
 
-  router.get('/update', function(req, res, next) {
-      res.render('update',{
-        getdatalength : datalength,
-        getId: id,
-        getName: name,
-        getImageUrl: imageurl,
-        getDes: description
-      });
-  });
-})
+
+router.get('/delete/:getid', function(req, res) {
+    models.Product.findById(req.params.getid).then(function(data) {
+        data.destroy()
+    }).then(function() {
+        res.redirect('/update')
+    })
+});
+
+
+router.get('/update', function(req, res, next) {
+    models.Product.findAll().then(function(data) {
+        var id = []
+        var name = []
+        var imageurl = []
+        var description = []
+        var datalength = data.length
+        for (var i = 0; i < data.length; i++) {
+            id.push(`${data[i].id}`)
+            name.push(`${data[i].name}`)
+            imageurl.push(`${data[i].imageUrl}`)
+            description.push(`${data[i].description}`)
+        }
+        res.render('update', {
+            getdatalength: datalength,
+            getId: id,
+            getName: name,
+            getImageUrl: imageurl,
+            getDes: description
+        });
+    })
+});
+
 
 
 
@@ -133,10 +143,6 @@ router.get('/about', function(req, res, next) {
 router.get('/contact', function(req, res, next) {
     res.render('contact');
 });
-
-
-
-
 
 
 module.exports = router;

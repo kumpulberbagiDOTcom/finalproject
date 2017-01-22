@@ -33,6 +33,33 @@ models.Product.findAll().then(function(data) {
 
 });
 
+models.Product.findAll().then(function(data){
+  var id = []
+  var name = []
+  var imageurl = []
+  var description = []
+  var datalength = data.length
+  for (var i = 0; i < data.length; i++) {
+    id.push(`${data[i].id}`)
+    name.push(`${data[i].name}`)
+    imageurl.push(`${data[i].imageUrl}`)
+    description.push(`${data[i].description}`)
+  }
+
+  router.get('/update', function(req, res, next) {
+      res.render('update',{
+        getdatalength : datalength,
+        getId: id,
+        getName: name,
+        getImageUrl: imageurl,
+        getDes: description
+      });
+  });
+})
+
+
+
+
 router.post('/login', function(req, res, next) {
     var email = req.body.email
     var password = req.body.password
@@ -87,13 +114,8 @@ router.post('/contact', function(req, res, next) {
 })
 
 
-
 router.get('/adminpanel', function(req, res, next) {
     res.render('adminpanel');
-});
-
-router.get('/update', function(req, res, next) {
-    res.render('update');
 });
 
 

@@ -3,14 +3,14 @@ var router = express.Router();
 const models = require('../models')
 /* GET home page. */
 
-// models.User.findById(2).then(function(getData) {
-//     router.get('/', function(req, res, next) {
+// router.get('/', function(req, res, next) {
+//     models.User.findById(2).then(function(getData) {
 //         res.render('index', {
 //             title: getData.name
 //         });
 //     });
 // })
-//
+
 
 router.get('/', function(req, res, next) {
     models.Product.findAll().then(function(data) {
@@ -42,6 +42,31 @@ router.get('/delete/:getid', function(req, res) {
     })
 });
 
+router.get('/updatedata/:getid', function(req, res) {
+    models.Product.findById(req.params.getid).then(function(data) {
+        res.render('updatedata', {
+            getId: `${data.id}`,
+            getName: `${data.name}`,
+            getImageUrl: `${data.imageUrl}`,
+            getDes: `${data.description}`
+        });
+    });
+});
+
+router.post('/updatedata', function(req, res, next) {
+    models.Product.findById(req.body.id).then(function(data) {
+        data.update({
+            name: req.body.name,
+            imageUrl: req.body.imageUrl,
+            description: req.body.desc,
+            updatedAt: new Date()
+        }).then(function() {
+            console.log("Saving Update Data");
+            res.redirect('/update')
+        })
+    })
+})
+
 
 router.get('/update', function(req, res, next) {
     models.Product.findAll().then(function(data) {
@@ -65,9 +90,6 @@ router.get('/update', function(req, res, next) {
         });
     })
 });
-
-
-
 
 
 router.post('/login', function(req, res, next) {
@@ -127,6 +149,7 @@ router.post('/contact', function(req, res, next) {
 router.get('/adminpanel', function(req, res, next) {
     res.render('adminpanel');
 });
+
 
 
 router.get('/login', function(req, res, next) {

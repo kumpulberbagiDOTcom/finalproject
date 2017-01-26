@@ -4,10 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var routes = require('./routes/index');
+var session = require('express-session') //for session (npm i --save express-session)
 var users = require('./routes/users');
-
 var app = express();
 
 // view engine setup
@@ -21,6 +20,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+})) //for session
+app.use(function(req, res, next) {
+    res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    next()
+})
 
 app.use('/', routes);
 app.use('/users', users);

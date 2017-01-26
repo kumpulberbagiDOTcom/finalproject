@@ -18,20 +18,20 @@
             <form action="/login" method="post" name="Login_Form" class="form-signin">
                 <img src="img/logo2.png" align="center"></img>
                 <hr class="colorgraph"><br>
-
-                <input type="text" class="form-control" name="email" placeholder="Email" required="" autofocus="" />
+                <input type="email" class="form-control" name="email" placeholder="Email" required="" autofocus="" />
                 <input type="password" class="form-control" name="password" placeholder="Password" required="" />
-
-                <button class="btn btn-lg btn-info btn-block" name="Submit" value="Login" type="Submit">LOGIN</button>
+                <button class="btn btn-lg btn-info btn-block" name="Submit" onclick="verifylogin()"value="Login" type="Submit">LOGIN</button>
                 <a href="/register" class="btn btn-info btn-block" role="button">REGISTER</a>
+                <p class="text-warning"><%=status%></p>
             </form>
-
-
         </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+
+
 </body>
 
 </html>

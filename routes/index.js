@@ -1,15 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const models = require('../models')
-/* GET home page. */
+const passwordHash = require('password-hash')
 
-// router.get('/', function(req, res, next) {
-//     models.User.findById(2).then(function(getData) {
-//         res.render('index', {
-//             title: getData.name
-//         });
-//     });
-// })
 
 
 router.get('/', function(req, res, next) {
@@ -27,7 +20,8 @@ router.get('/', function(req, res, next) {
             getdatalength: datalength,
             getImg: img,
             getName: name,
-            getDec: des
+            getDec: des,
+            statusloginregister: req.session.statusloginregister || "Login/Register"
         });
     });
 });
@@ -48,7 +42,8 @@ router.get('/updatedata/:getid', function(req, res) {
             getId: `${data.id}`,
             getName: `${data.name}`,
             getImageUrl: `${data.imageUrl}`,
-            getDes: `${data.description}`
+            getDes: `${data.description}`,
+            level:  req.session.nameuser || "Admin"
         });
     });
 });
@@ -86,7 +81,8 @@ router.get('/update', function(req, res, next) {
             getId: id,
             getName: name,
             getImageUrl: imageurl,
-            getDes: description
+            getDes: description,
+            level:  req.session.nameuser || "Admin"
         });
     })
 });
@@ -95,34 +91,57 @@ router.get('/update', function(req, res, next) {
 router.post('/login', function(req, res, next) {
     var email = req.body.email
     var password = req.body.password
-    console.log(email);
-    console.log(password);
-    models.User.findAll().then(function(data) {
-        data.forEach(function(getData) {
-            if (getData.email == email && getData.password == password) {
-                res.redirect('/adminpanel')
-            } else {
-                console.log("Email Salah");
-            }
-        })
+    models.User.findOne({
+      where:{
+        email: email
+      }
+    }).then(function(getData){
+        if(getData){
+          if (getData.email == email && passwordHash.verify(password,getData.password)==true) {
+              req.session.statuslogin=true
+              req.session.statusloginregister = "Logout"
+              req.session.nameuser = getData.name
+              res.redirect('/adminpanel')
+          } else {
+            res.render('login',{
+              status:"The email or password is incorrect"
+            })
+          }
+        }else{
+            res.render('login',{
+                status:"The email or password is incorrect"
+            })
+        }
+
     })
 })
 
 
 router.post('/register', function(req, res, next) {
-    // create a new user
-    models.User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    }).then(function() {
-        console.log("Saving New User");
-        res.redirect('/login')
-    })
+  models.User.findOne({
+    email:req.body.name
+  }).then(function(result) {
+    if(result){
+        res.render('register',{
+          statusregister:"Emaal Sudah Terdaftar"
+        })
+    }else{
+      models.User.create({
+          name: req.body.name,
+          email: req.body.email,
+          password: passwordHash.generate(req.body.password)
+      }).then(function() {
+          console.log("Saving New User");
+          res.redirect('/login')
+      })
+    }
+  })
 })
 
 router.post('/adminpanel', function(req, res, next) {
-    // create a new user
+  if(req.session.statuslogin != true){
+    res.redirect('/')
+  }else{
     models.Product.create({
         imageUrl: req.body.imageurl,
         name: req.body.name,
@@ -131,10 +150,10 @@ router.post('/adminpanel', function(req, res, next) {
         console.log("Saving New Product");
         res.redirect('/adminpanel')
     })
+  }
 })
 
 router.post('/contact', function(req, res, next) {
-    // create a new user
     models.Feedback.create({
         name: req.body.name,
         email: req.body.email,
@@ -147,24 +166,45 @@ router.post('/contact', function(req, res, next) {
 
 
 router.get('/adminpanel', function(req, res, next) {
-    res.render('adminpanel');
+    res.render('adminpanel',{
+      level:  req.session.nameuser || "Admin"
+    });
 });
 
 
 
 router.get('/login', function(req, res, next) {
-    res.render('login');
+    res.render('login',{
+      status:""
+    });
 });
 
 router.get('/register', function(req, res, next) {
-    res.render('register');
+    res.render('register',{
+      statusregister:""
+    });
+});
+
+
+router.get('/ar', function(req, res, next) {
+    res.render('ar');
 });
 
 router.get('/about', function(req, res, next) {
-    res.render('about');
+    res.render('about',{
+      statusloginregister: req.session.statusloginregister || "Login/Register"
+    });
 });
+
+router.get('/logout', function(req, res, next) {
+    req.session.destroy()
+    res.redirect('/login');
+});
+
 router.get('/contact', function(req, res, next) {
-    res.render('contact');
+    res.render('contact',{
+      statusloginregister: req.session.statusloginregister || "Login/Register"
+    });
 });
 
 

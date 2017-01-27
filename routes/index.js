@@ -194,7 +194,7 @@ router.get('/register', function(req, res, next) {
 
 
 router.get('/ar', function(req, res, next) {
-    res.render('ar');
+    res.redirect('/ar/index');
 });
 
 router.get('/about', function(req, res, next) {

@@ -192,11 +192,6 @@ router.get('/register', function(req, res, next) {
     });
 });
 
-
-router.get('/ar', function(req, res, next) {
-    res.redirect('/ar/index');
-});
-
 router.get('/about', function(req, res, next) {
     res.render('about', {
         statusloginregister: req.session.statusloginregister || "Login/Register"

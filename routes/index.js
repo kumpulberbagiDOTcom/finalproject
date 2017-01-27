@@ -110,11 +110,13 @@ router.post('/login', function(req, res, next) {
 
 router.post('/register', function(req, res, next) {
     models.User.findOne({
-        email: req.body.name
+      where:{
+        email: req.body.email
+      }
     }).then(function(result) {
         if (result) {
             res.render('register', {
-                statusregister: "Emaal Sudah Terdaftar"
+                statusregister: "Email Sudah Terdaftar"
             })
         } else {
             models.User.create({

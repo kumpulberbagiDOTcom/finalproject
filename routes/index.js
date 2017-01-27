@@ -6,7 +6,7 @@ const passwordHash = require('password-hash')
 router.get('/', function(req, res, next) {
     models.Product.findAll().then(function(data) {
         res.render('index', {
-            getData: data,
+            // getData: data,
             statusloginregister: req.session.statusloginregister || "Login/Register"
         });
     });

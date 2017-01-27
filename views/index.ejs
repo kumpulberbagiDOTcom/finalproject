@@ -129,29 +129,6 @@
 							</div>
 						</div>
 					</li>
-					<!-- <li>
-						<img src="img/image1.jpg" alt="">
-						<div class="caption">
-
-					</li>
-					<li>
-						<img src="img/image1.jpg" alt="">
-						<div class="caption">
-
-						</div>
-					</li>
-					<li>
-						<img src="img/image1.jpg" alt="">
-						<div class="caption">
-
-						</div>
-					</li>
-					<li>
-						<img src="img/image1.jpg" alt="">
-						<div class="caption">
-
-						</div>
-					</li> -->
 				</ul>
 			</div>
 		</div>
@@ -174,21 +151,21 @@
 					<div class="our-work-section" id="portfolio">
 						<div id="portfoliolist">
 							<%var number = 1%>
-							<%for (var i = getdatalength-1; i >= 0; i--) {%>
+							<%getData.forEach(function(Result){%>
 								<div class="portfolio card mix_all  wow bounceIn" class="cbp-vm-image" data-wow-delay="0.4s" data-cat="card" style="display: inline-block; opacity: 1;">
 									<div class="portfolio-wrapper">
-										<img src=<%=getImg[i]%> alt="" />
+										<img src=<%=Result.imageUrl%> alt="">
 									</div>
-									<h4><%=getName[i]%></h4>
+									<h4><%=Result.name%></h4>
 									<p>
-										<%=getDec[i]%>
+										<%=Result.description%>
 									</p>
 								</div>
 								<%if(number%3==0){%>
 										<div class="clearfix"> </div>
 								<%}%>
 								<%number++%>
-								<%}%>
+								<%})%>
 						</div>
 					</div>
 

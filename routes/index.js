@@ -5,20 +5,8 @@ const passwordHash = require('password-hash')
 
 router.get('/', function(req, res, next) {
     models.Product.findAll().then(function(data) {
-        var name = [];
-        var des = [];
-        var img = [];
-        var datalength = data.length
-        for (var i = 0; i < data.length; i++) {
-            name.push(`${data[i].name}`)
-            des.push(`${data[i].description}`)
-            img.push(`${data[i].imageUrl}`)
-        }
         res.render('index', {
-            getdatalength: datalength,
-            getImg: img,
-            getName: name,
-            getDec: des,
+            getData: data,
             statusloginregister: req.session.statusloginregister || "Login/Register"
         });
     });

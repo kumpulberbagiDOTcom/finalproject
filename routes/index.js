@@ -4,13 +4,12 @@ const models = require('../models')
 const passwordHash = require('password-hash')
 
 router.get('/', function(req, res, next) {
-    // models.Product.findAll().then(function(data) {
-        res.render('index')
-        // , {
-            // getData: data,
-            // statusloginregister: req.session.statusloginregister || "Login/Register"
-        // });
-    // });
+    models.Product.findAll().then(function(data) {
+        res.render('index',{
+            getData: data,
+            statusloginregister: req.session.statusloginregister || "Login/Register"
+        });
+    });
 });
 
 
